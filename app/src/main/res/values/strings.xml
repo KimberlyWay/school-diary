@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Дневник</string>
+    <string name="login_title">Вход в дневник</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in">Войти</string>
+    <string name="fill_fields">Введите логин и пароль</string>
+    <string name="wrong_credentials">Неверный логин или пароль</string>
+    <string name="diary_title">Дневник учащегося</string>
+    <string name="student_info">%1$s, %2$s</string>
+    <string name="subject">Предмет</string>
+    <string name="grades">Оценки</string>
+    <string name="teacher">Преподаватель</string>
+    <string name="sign_out">Выйти</string>
+</resources>

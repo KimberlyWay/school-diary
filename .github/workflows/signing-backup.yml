@@ -1,0 +1,23 @@
+name: Signing backup
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare private backup
+        env:
+          KEYSTORE: ${{ secrets.DIARY_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.DIARY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.DIARY_KEY_PASSWORD }}
+        run: |
+          mkdir signing
+          printf '%s' "$KEYSTORE" | base64 --decode > signing/diary.jks
+          printf 'Alias: diary\nStore password: %s\nKey password: %s\n' "$STORE_PASSWORD" "$KEY_PASSWORD" > signing/passwords.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Private-signing-backup
+          path: signing/
+          retention-days: 1
